@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode", // Prettier 插件
+    "vue.volar", // Vue 插件
+    "ms-vscode.typescript-language-features", // TypeScript 插件
+    "yzhang.markdown-all-in-one" // Markdown 插件
+  ]
+}
