@@ -31,7 +31,7 @@ const blogTheme = getThemeConfig({
   footer: {
     // message 字段支持配置为HTML内容，配置多条可以配置为数组
     // message: '下面 的内容和图标都是可以修改的噢（当然本条内容也是可以隐藏的）',
-    copyright: 'MIT License | 千子',
+    copyright: 'MIT License | chiko'
     // icpRecord: {
     //   name: '蜀ICP备19011724号',
     //   link: 'https://beian.miit.gov.cn/'
@@ -43,20 +43,19 @@ const blogTheme = getThemeConfig({
   },
 
   // 主题色修改
-  themeColor: 'el-red',
+  themeColor: 'el-yellow',
 
   // 文章默认作者
-  author: '千子',
+  author: 'Chiko',
 
   // 友链
   friend: [
     {
       nickname: 'Vitepress',
       des: 'Vite & Vue Powered Static Site Generator',
-      avatar:
-        'https://vitepress.dev/vitepress-logo-large.webp',
-      url: 'https://vitepress.dev/',
-    },
+      avatar: 'https://vitepress.dev/vitepress-logo-large.webp',
+      url: 'https://vitepress.dev/'
+    }
   ],
 
   // 公告
@@ -92,7 +91,7 @@ const blogTheme = getThemeConfig({
       // }
     ],
     duration: 0
-  },
+  }
 })
 
 export { blogTheme }
