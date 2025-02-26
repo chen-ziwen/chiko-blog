@@ -41,7 +41,7 @@ export default defineConfig({
     // 设置logo
     logo: '/logo.png',
     editLink: {
-      pattern: 'https://github.com/chen-ziwen/chiko_blog/docs/:path',
+      pattern: 'https://github.com/chen-ziwen/chiko_blog/tree/main/docs/:path',
       text: '去 GitHub 上编辑内容'
     },
     nav: [
