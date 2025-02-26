@@ -1,13 +1,9 @@
-# 首页
-
 ---
-
 hidden: true
 sidebar:
-title: 简介
+  title: 简介
 group:
-title: Javascript
-
+  title: Javascript
 ---
 
 # 简介
@@ -17,9 +13,10 @@ title: Javascript
 ## 目录
 
 - [apply,call,bind 的异同](./apply.md)
-- [箭头函数?](./test1.md)
+- [节流与防抖](./throttling.md)
+- [生成器](./generator.md)
+- [sort使用细节](./sort.md)
 - [blob与file](./test2.md)
-- [定时器](./clock.md)
 - [闭包](./closure.md)
 - [浅拷贝与深拷贝](./copy.md)
 - [柯里化(Currying)](./currying.md)

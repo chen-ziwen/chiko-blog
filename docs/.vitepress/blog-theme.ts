@@ -91,6 +91,9 @@ const blogTheme = getThemeConfig({
       // }
     ],
     duration: 0
+  },
+  article: {
+    readingTime: true
   }
 })
 

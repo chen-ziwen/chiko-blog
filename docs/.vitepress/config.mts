@@ -20,6 +20,7 @@ export default defineConfig({
   title: "Chiko's Blog",
   description: '知识的港湾，思维的工坊',
   lastUpdated: true,
+  cleanUrls: true, // 清除 .html 后缀，后端需要重定向 
   // 详见：https://vitepress.dev/zh/reference/site-config#head
   head: [
     // 配置网站的图标（显示在浏览器的 tab 上）
@@ -39,15 +40,11 @@ export default defineConfig({
 
     // 设置logo
     logo: '/logo.png',
-    // editLink: {
-    //   pattern: 'https://github.com/ATQQ/sugar-blog/tree/master/packages/blogpress/:path',
-    //   text: '去 GitHub 上编辑内容'
-    // },
+    editLink: {
+      pattern: 'https://github.com/chen-ziwen/chiko_blog/docs/:path',
+      text: '去 GitHub 上编辑内容'
+    },
     nav: [
-      // {
-      //   text: '关于我',
-      //   link: '/aboutme'
-      // },
       {
         text: '技术笔记',
         items: [
@@ -79,29 +76,7 @@ export default defineConfig({
           { text: 'css', link: '/bigWeb/css/' },
           { text: '🌏浏览器专题', link: '/bigWeb/browser/' },
           { text: 'Web性能优化', link: '/bigWeb/performance/' },
-          { text: 'regexp', link: '/bigWeb/regexp/' },
-          { text: 'node', link: '/bigWeb/node/' }
-        ]
-      },
-      {
-        text: '面试',
-        items: [
-          { text: '心得总结', link: '/offer/experience/' },
-          { text: '校招考点汇总', link: '/offer/campus/' },
-          { text: '面经汇总', link: '/offer/sum-interview/' },
-          { text: '复习自查', link: '/offer/review/' },
-          { text: '问解', link: '/interview/problem/' },
-          { text: 'javascript', link: '/interview/js/' },
-          { text: 'css', link: '/interview/css/' },
-          { text: '手撕代码', link: '/interview/code/' },
-          { text: '性能优化', link: '/interview/performance/' },
-          // { text: "网络", link: "/interview/internet/" },
-          // { text: '操作系统', link: '/interview/os/' },
-          // { text: '设计模式', link: '/interview/design/' },
-          { text: '综合问题', link: '/interview/other/' },
-          { text: '面经汇总', link: '/offer/sum-interview/' },
-          { text: '小程序', link: '/interview/mini/' }
-          // { text: '面经', link: '/interview/experience/' }
+          { text: 'nodejs', link: '/bigWeb/node/' }
         ]
       },
       {
@@ -111,6 +86,10 @@ export default defineConfig({
           { text: 'javascript', link: '/coding/js/' },
           { text: 'css', link: '/coding/css/' }
         ]
+      },
+      {
+        text: '小记',
+        link: '/aboutme'
       },
       // {
       //   text: '个人站点',
@@ -139,31 +118,6 @@ export default defineConfig({
       //     // },
       //   ]
       // },
-      {
-        text: '线上作品',
-        items: [
-          {
-            text: '轻取(文件收集)',
-            link: 'https://ep2.sugarat.top'
-          },
-          {
-            text: '个人图床',
-            link: 'https://imgbed.sugarat.top'
-          },
-          {
-            text: '考勤小程序',
-            link: 'https://hdkq.sugarat.top/'
-          },
-          {
-            text: '时光恋人',
-            link: 'https://lover.sugarat.top'
-          },
-          {
-            text: '在线简历生成',
-            link: 'https://resume.sugarat.top/'
-          }
-        ]
-      }
     ],
     socialLinks: [
       {
