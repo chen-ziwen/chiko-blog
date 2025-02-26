@@ -20,7 +20,7 @@ export default defineConfig({
   title: "Chiko's Blog",
   description: '知识的港湾，思维的工坊',
   lastUpdated: true,
-  cleanUrls: true, // 清除 .html 后缀，后端需要重定向 
+  cleanUrls: true, // 清除 .html 后缀，后端需要重定向
   // 详见：https://vitepress.dev/zh/reference/site-config#head
   head: [
     // 配置网站的图标（显示在浏览器的 tab 上）
@@ -90,7 +90,7 @@ export default defineConfig({
       {
         text: '小记',
         link: '/aboutme'
-      },
+      }
       // {
       //   text: '个人站点',
       //   items: [
@@ -122,7 +122,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://git@github.com:chen-ziwen/chiko_blog.git'
+        link: 'https://github.com/chen-ziwen'
       }
     ]
   }

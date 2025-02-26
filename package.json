@@ -6,7 +6,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "vitepress dev docs",
+    "start": "vitepress dev docs",
     "build": "vitepress build docs",
     "serve": "vitepress serve docs",
     "prepare": "husky"
