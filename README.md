@@ -1,6 +1,6 @@
 # Chiko's Blog
 
-在这个由0和1构成的虚拟世界里，我愿与你分享我的技术旅程和生活片段。
+在这个由 0 和 1 构成的虚拟世界里，我愿与你分享我的技术旅程和生活片段。
 
 ## 展望
 
@@ -18,7 +18,7 @@
 
 ## 预览地址
 
-- [部署在 vercel 上](https://www.chiko.store) （推荐）
-- [部署在 github-paegs 上](https://blog.chiko.store/)
+- [Vercel](https://www.chiko.store) （推荐）
+- [GitHub Pages](https://blog.chiko.store/)
 
 欢迎你，来到我的世界，一起在代码与生活之间，寻找属于我们的节奏和旋律。

@@ -122,7 +122,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/chen-ziwen'
+        link: 'https://github.com/chen-ziwen/chiko_blog'
       }
     ]
   }

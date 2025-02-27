@@ -50,7 +50,7 @@ upsert(user: PlayerItem, callback: (oUser: PlayerItem) => PlayerItem) {
         const nUser = callback(this.mPlayerMap.get(userId)!);
         this.update(nUser);
     } else {
-            this.insert(user);
+        this.insert(user);
     }
 }
 ```
