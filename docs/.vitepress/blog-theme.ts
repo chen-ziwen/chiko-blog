@@ -57,11 +57,11 @@ const blogTheme = getThemeConfig({
 
   // 文章评论
   comment: {
-    repo: 'ATQQ/sugar-blog',
-    repoId: 'MDEwOlJlcG9zaXRvcnkyNDEyNDUyOTk',
+    repo: 'chen-ziwen/chiko_blog',
+    repoId: 'R_kgDON_Ep0g',
     category: 'Announcements',
-    categoryId: 'DIC_kwDODmEcc84COVc6',
-    inputPosition: 'top'
+    categoryId: 'DIC_kwDON_Ep0s4CndAR',
+    inputPosition: 'bottom'
   },
 
   // 友链

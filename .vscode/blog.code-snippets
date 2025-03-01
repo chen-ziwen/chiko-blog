@@ -8,16 +8,17 @@
 			  "title: 简介"
 			"group:"
 			  "title: $1"
+			"comment: false"
 			"---"
 		],
-		"description": "快速创建 blog index页面"
+		"description": "快速创建 blog index 页面"
 	},
 	"blog page": {
 		"prefix": "<bp",
 		"body": [
 		   "---"
-           "description: $1"
-           "date: 2025-$2"
+           "title: $1"
+           "date: 2024-$2"
            "isTimeLine: true"
            "tags:"
               "- $3"

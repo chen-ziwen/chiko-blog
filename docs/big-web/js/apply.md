@@ -4,7 +4,7 @@ sidebar:
   step: 10
 isTimeLine: true
 title: apply,call,bind的异同
-date: 2025-02-26
+date: 2024-02-26
 tags:
   - 大前端
   - javascript

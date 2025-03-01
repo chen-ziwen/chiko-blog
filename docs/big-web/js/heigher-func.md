@@ -1,7 +1,7 @@
 ---
 title: 功能强大的高阶函数
 description: 高阶函数非常的强大，能解决很多问题，不会的小伙伴要学习起来！
-date: 2025-02-26
+date: 2024-02-26
 isTimeLine: true
 tags:
   - javascript

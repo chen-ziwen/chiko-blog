@@ -1,6 +1,9 @@
 ---
+top: 3
+sticky: 998
+title: 生成器
 description: 对比 JavaScript 和 Python 的生成器
-date: 2025-02-26
+date: 2024-02-26
 isTimeLine: true
 tags:
   - javascript

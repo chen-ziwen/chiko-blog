@@ -59,24 +59,24 @@ export default defineConfig({
       {
         text: '计算机基础',
         items: [
-          { text: '算法与数据结构', link: '/computerBase/algorithm/' },
-          { text: '操作系统', link: '/computerBase/os/' },
-          { text: '计算机网络', link: '/computerBase/Internet/' },
-          { text: '设计模式', link: '/computerBase/design/' },
-          { text: '剑指offer', link: '/computerBase/offer/' }
+          { text: '算法与数据结构', link: '/computer-base/algorithm/' },
+          { text: '操作系统', link: '/computer-base/os/' },
+          { text: '计算机网络', link: '/computer-base/Internet/' },
+          { text: '设计模式', link: '/computer-base/design/' },
+          { text: '剑指offer', link: '/computer-base/offer/' }
           // { text: '力扣', link: '/computerBase/leetcode/' }
         ]
       },
       {
         text: '大前端',
         items: [
-          { text: 'javascript', link: '/bigWeb/js/' },
-          { text: 'vue', link: '/bigWeb/vue/' },
-          { text: 'html', link: '/bigWeb/html/' },
-          { text: 'css', link: '/bigWeb/css/' },
-          { text: '🌏浏览器专题', link: '/bigWeb/browser/' },
-          { text: 'Web性能优化', link: '/bigWeb/performance/' },
-          { text: 'nodejs', link: '/bigWeb/node/' }
+          { text: 'javascript', link: '/big-web/js/' },
+          { text: 'vue', link: '/big-web/vue/' },
+          { text: 'html', link: '/big-web/html/' },
+          { text: 'css', link: '/big-web/css/' },
+          { text: '🌏浏览器专题', link: '/big-web/browser/' },
+          { text: 'Web性能优化', link: '/big-web/performance/' },
+          { text: 'nodejs', link: '/big-web/node/' }
         ]
       },
       {

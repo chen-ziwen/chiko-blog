@@ -1,6 +1,6 @@
 ---
 description: 简单介绍 sort 方法的使用
-date: 2025-02-26
+date: 2024-02-26
 isTimeLine: true
 tags:
   - javascript
