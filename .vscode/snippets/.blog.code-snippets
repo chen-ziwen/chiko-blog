@@ -1,0 +1,28 @@
+{
+	"blog index": {
+		"prefix": "<bi",
+		"body": [
+			"---"
+			"hidden: true"
+			"sidebar:"
+			  "title: 简介"
+			"group:"
+			  "title: $1"
+			"---"
+		],
+		"description": "快速创建 blog index页面"
+	},
+	"blog page": {
+		"prefix": "<bp",
+		"body": [
+		   "---"
+           "description: $1"
+           "date: 2025-$2"
+           "isTimeLine: true"
+           "tags:"
+              "- $3"
+            "---"
+		],
+		"description": "快速创建 blog page 页面"
+	}
+}

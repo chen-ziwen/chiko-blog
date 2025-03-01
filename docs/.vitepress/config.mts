@@ -89,7 +89,7 @@ export default defineConfig({
       },
       {
         text: '小记',
-        link: '/aboutme'
+        link: '/xiaoji/'
       }
       // {
       //   text: '个人站点',

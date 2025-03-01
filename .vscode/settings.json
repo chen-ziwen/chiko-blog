@@ -1,0 +1,10 @@
+{
+  "[markdown]": {
+    "editor.quickSuggestions": {
+      "comments": "on", // 注释中触发建议
+      "strings": "on", // 字符串中触发建议
+      "other": "on" // 其他代码区域触发建议
+    },
+    "editor.acceptSuggestionOnEnter": "on" // 按 Enter 接受建议
+  }
+}
