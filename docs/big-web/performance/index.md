@@ -9,4 +9,7 @@ comment: false
 
 # 简介
 
-记载一些关于 web 性能优化的特性
+一些关于 Web 性能优化的关键特性与方法
+
+- [前端性能监控与分析](./monitoring-analysis.md)
+- [前端性能优化指标与策略](./optimization-metrics.md)

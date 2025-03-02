@@ -1,7 +1,4 @@
 ---
-top: 4
-recommend: 99
-hot: 3
 hidden: true
 sidebar:
   title: 简介

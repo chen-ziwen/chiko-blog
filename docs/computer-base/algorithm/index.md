@@ -3,7 +3,7 @@ hidden: true
 sidebar: false
 title: 力扣个人主页
 group:
-  - 数据结构与算法
+  title: 数据结构与算法
 comment: false
 ---
 

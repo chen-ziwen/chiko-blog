@@ -14,8 +14,7 @@ comment: false
 ## 目录
 
 - [前端路由](./router.md)
-- [apply,call,bind 的异同](./apply.md)
 - [功能强大的高阶函数](./heigher-func.md)
-- [节流与防抖](./throttling.md)
 - [生成器](./generator.md)
 - [sort使用细节](./sort.md)
+- [apply,call,bind 的异同](./apply.md)

@@ -9,4 +9,7 @@ comment: false
 
 # 简介
 
-记载一些关于 HTML 的特性
+记录一些关于 HTML 的特性与技巧
+
+- [HTML高级表单特性与交互技巧](./advanced-form-features.md)
+- [Shadow DOM和Web Components](./shadow-dom-components.md)

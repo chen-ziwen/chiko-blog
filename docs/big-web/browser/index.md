@@ -9,4 +9,7 @@ comment: false
 
 # 简介
 
-记载一些关于 浏览器 的特性
+学习了解浏览器特性
+
+- [理解浏览器渲染原理](./browser-render.md)
+- [理解浏览器事件循环机制](./event-loop.md)

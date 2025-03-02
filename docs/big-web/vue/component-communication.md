@@ -1,5 +1,4 @@
 ---
-hidden: true
 title: Vue3组件通信方式
 date: 2024-03-20
 isTimeLine: true

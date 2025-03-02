@@ -1,6 +1,6 @@
 ---
 top: 1
-sticky: 999
+sticky: 998
 title: 前端路由
 description: hash 路由和 history 路由的区别和简单实现原理
 date: 2024-02-26
