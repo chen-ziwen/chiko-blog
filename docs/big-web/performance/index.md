@@ -3,10 +3,10 @@ hidden: true
 sidebar:
   title: 简介
 group:
-  title: CSS
+  title: Web 性能优化
 comment: false
 ---
 
 # 简介
 
-记载一些关于 CSS 的特性
+记载一些关于 web 性能优化的特性

@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: js 分号规则
 date: 2024-03-01
 isTimeLine: true

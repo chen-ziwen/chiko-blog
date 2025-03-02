@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: cdn 作用
 date: 2024-03-01
 isTimeLine: true

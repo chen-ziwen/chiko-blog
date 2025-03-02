@@ -4,6 +4,7 @@ sidebar:
   title: 简介
 group:
   title: Vue
+comment: false
 ---
 
 # 简介

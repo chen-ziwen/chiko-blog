@@ -45,26 +45,22 @@ export default defineConfig({
       text: '去 GitHub 上编辑内容'
     },
     nav: [
-      {
-        text: '技术笔记',
-        items: [
-          { text: '技术教程', link: '/technology/learn/' },
-          { text: '模板工程', link: '/technology/tpl/' },
-          { text: '源码学习', link: '/technology/source/' },
-          { text: '技术概念', link: '/technology/theory/' },
-          { text: '个人作品', link: '/technology/works/' },
-          { text: '学习笔记', link: '/technology/study/' }
-        ]
-      },
+      // {
+      //   text: '技术笔记',
+      //   items: [
+      //     { text: '模板工程', link: '/technology/tpl/' },
+      //     { text: '源码学习', link: '/technology/source/' },
+      //     { text: '技术概念', link: '/technology/theory/' },
+      //     { text: '个人作品', link: '/technology/works/' },
+      //   ]
+      // },
       {
         text: '计算机基础',
         items: [
           { text: '算法与数据结构', link: '/computer-base/algorithm/' },
           { text: '操作系统', link: '/computer-base/os/' },
-          { text: '计算机网络', link: '/computer-base/Internet/' },
-          { text: '设计模式', link: '/computer-base/design/' },
-          { text: '剑指offer', link: '/computer-base/offer/' }
-          // { text: '力扣', link: '/computerBase/leetcode/' }
+          { text: '计算机网络', link: '/computer-base/internet/' },
+          { text: '设计模式', link: '/computer-base/design/' }
         ]
       },
       {
@@ -74,50 +70,52 @@ export default defineConfig({
           { text: 'vue', link: '/big-web/vue/' },
           { text: 'html', link: '/big-web/html/' },
           { text: 'css', link: '/big-web/css/' },
-          { text: '🌏浏览器专题', link: '/big-web/browser/' },
+          { text: '浏览器', link: '/big-web/browser/' },
           { text: 'Web性能优化', link: '/big-web/performance/' },
+          { text: '前端工程化', link: '/big-web/engineered/' },
           { text: 'nodejs', link: '/big-web/node/' }
-        ]
-      },
-      {
-        text: '手撕代码',
-        items: [
-          { text: '数据结构与算法', link: '/coding/algorithm/' },
-          { text: 'javascript', link: '/coding/js/' },
-          { text: 'css', link: '/coding/css/' }
         ]
       },
       {
         text: '小记',
         link: '/xiaoji/'
+      },
+      {
+        text: '网站导航',
+        items: [
+          { text: '大前端', link: 'http://www.alloyteam.com/nav/' },
+          { text: 'AI 工具', link: 'https://openi.cn/' },
+          { text: '灰大设计', link: 'https://www.huisezhizhao.com/' },
+          { text: 'NodeJS 中文网', link: 'https://nodejs.cn/' },
+          { text: 'Hello 算法', link: 'https://www.hello-algo.com/' },
+          { text: '无限邮箱', link: 'https://2925.com/' },
+          { text: 'Git 学习', link: 'https://learngitbranching.js.org/?locale=zh_CN' },
+          {
+            text: 'CSS 布局游戏',
+            items: [
+              { text: 'Flex 布局', link: 'https://flexboxfroggy.com/' },
+              { text: 'Grid 布局', link: 'https://cssgridgarden.com/' }
+            ]
+          }
+        ]
+      },
+      {
+        text: '个人站点',
+        items: [
+          {
+            text: 'GitHub',
+            link: 'https://github.com/chen-ziwen/chiko_blog'
+          },
+          {
+            text: '掘金',
+            link: 'https://juejin.cn/user/2731615071779406'
+          },
+          {
+            text: 'CSDN',
+            link: 'https://blog.csdn.net/weixin_43320737?spm=1000.2115.3001.5343'
+          }
+        ]
       }
-      // {
-      //   text: '个人站点',
-      //   items: [
-      //     {
-      //       text: 'GitHub',
-      //       link: 'https://github.com/ATQQ/sugar-blog'
-      //     },
-      //     {
-      //       text: '博客园',
-      //       link: 'https://www.cnblogs.com/roseAT/'
-      //     },
-      //     {
-      //       text: '掘金',
-      //       link: 'https://juejin.im/user/1028798615918983'
-      //     }
-      //     // {
-      //     //   text: "GitBook-blog",
-      //     //   link: "https://sugar-at.gitbook.io/blog-article/",
-      //     //   icon: "reco-blog",
-      //     // },
-      //     // {
-      //     //   text: "GitBook-ES6",
-      //     //   link: "https://sugar-js.gitbook.io/-1/",
-      //     //   icon: "reco-document",
-      //     // },
-      //   ]
-      // },
     ],
     socialLinks: [
       {

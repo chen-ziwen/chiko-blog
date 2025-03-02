@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: js 解构赋值默认值
 date: 2023-05-01
 isTimeLine: true

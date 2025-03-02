@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: es6 模块特点
 date: 2024-
 isTimeLine: true
