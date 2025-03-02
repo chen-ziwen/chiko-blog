@@ -10,6 +10,6 @@ blog:
     - 每一天都是重启，每一刻都是开始。
     - 不迎合，不妥协，活出自己的样子。
   inspiringTimeout: 3000
-  pageSize: 6
+  pageSize: 10
   logo: /avatar.jpg
 ---
