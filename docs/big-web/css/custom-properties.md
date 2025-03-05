@@ -1,5 +1,5 @@
 ---
-title: CSS变量高级应用指南
+title: CSS变量高级应用
 isTimeLine: true
 date: 2024-04-05
 tags:
@@ -9,7 +9,7 @@ categories:
   - 大前端
 ---
 
-# CSS变量高级应用指南
+# CSS变量高级应用
 
 ## 基础概念
 

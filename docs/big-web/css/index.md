@@ -13,7 +13,7 @@ comment: false
 
 ## 目录
 
-- [CSS Grid布局系统精通](./grid-layout.md)
-- [CSS 动画性能优化指南](./animation-performance.md)
-- [CSS 变量高级应用指南](./custom-properties.md)
+- [Grid布局系统](./grid-layout.md)
+- [CSS动画性能优化](./animation-performance.md)
 - [现代响应式布局设计](./responsive-design.md)
+- [CSS变量高级应用](./custom-properties.md)

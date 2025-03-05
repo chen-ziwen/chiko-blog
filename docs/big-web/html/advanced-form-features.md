@@ -1,5 +1,5 @@
 ---
-title: HTML高级表单特性与交互技巧
+title: 高级表单特性与交互技巧
 date: 2024-01-16
 isTimeLine: true
 tags:
@@ -10,7 +10,7 @@ tags:
 description: 深入探讨HTML表单的高级特性和交互技巧，掌握现代Web表单开发
 ---
 
-# HTML高级表单特性与交互技巧
+# 高级表单特性与交互技巧
 
 ## 表单验证
 

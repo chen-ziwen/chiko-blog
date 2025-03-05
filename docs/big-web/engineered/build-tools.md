@@ -1,7 +1,7 @@
 ---
 top: 8
 sticky: 991
-title: 前端构建工具原理
+title: 构建工具原理
 date: 2024-03-28
 isTimeLine: true
 tags:
@@ -9,7 +9,7 @@ tags:
   - 前端工程化
 ---
 
-# 前端构建工具原理
+# 构建工具原理
 
 ## 构建工具的核心概念
 

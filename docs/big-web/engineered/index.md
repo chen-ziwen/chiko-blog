@@ -13,6 +13,6 @@ comment: false
 
 ## 目录
 
-- [前端构建工具原理](./build-tools.md)
-- [前端代码转译机制](./code-transform.md)
-- [前端模块化打包优化](./module-bundle.md)
+- [构建工具原理](./build-tools.md)
+- [代码转译机制](./code-transform.md)
+- [模块化打包优化](./module-bundle.md)

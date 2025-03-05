@@ -1,5 +1,5 @@
 ---
-title: CSS Grid布局系统精通
+title: Grid布局
 isTimeLine: true
 date: 2024-08-15
 tags:
@@ -7,7 +7,7 @@ tags:
   - CSS
 ---
 
-# CSS Grid布局系统精通
+# Grid布局
 
 ## Grid布局基础
 

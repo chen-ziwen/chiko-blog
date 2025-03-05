@@ -15,7 +15,8 @@ Vue.js是一个渐进式的JavaScript框架，它以声明式渲染和组件化�
 
 - [Vue的Diff算法详解](./diff-algorithm.md)
 - [Vue与React的深度对比](./vue-vs-react.md)
-- [Vue响应式原理分析](./reactive-principle)
+- [Vue响应式原理分析](./reactive-principle.md)
+- [Vue3组件通信方式](./component-communication.md)
 
 ## 技术生态
 

@@ -1,5 +1,5 @@
 ---
-title: CSS动画性能优化指南
+title: CSS动画性能优化
 isTimeLine: true
 date: 2024-02-26
 tags:
@@ -9,7 +9,7 @@ categories:
   - 大前端
 ---
 
-# CSS动画性能优化指南
+# CSS动画性能优化
 
 ## 浏览器渲染机制
 
