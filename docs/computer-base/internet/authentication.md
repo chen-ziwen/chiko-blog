@@ -1,170 +1,239 @@
 ---
-title: Web身份认证机制
-date: 2022-02-22
+title: Web应用身份认证
+date: 2023-01-15
 isTimeLine: true
 tags:
   - 计算机网络
   - 身份认证
   - 安全
-description: Web应用中的身份认证机制、实现方案及安全最佳实践
+description: Web应用中常见的身份认证方案、实现方式及安全最佳实践
 ---
 
-# Web身份认证机制
+# Web应用身份认证
 
-## 认证基础
+## 认证方案
 
-### 什么是身份认证
-
-身份认证是验证用户身份的过程，确保系统资源只能被授权用户访问。
-
-### 认证的重要性
-
-1. 保护用户隐私
-2. 确保数据安全
-3. 防止未授权访问
-4. 追踪用户行为
-
-## 常见认证方式
-
-### 1. Session-Cookie认证
+### Session-Cookie认证
 
 ```javascript
 // 服务器端设置Session
-session.set('userId', user.id)
+app.use(
+  session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: true,
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000 // 24小时
+    }
+  })
+)
 
-// 客户端携带Cookie
-// Cookie自动携带在请求头中
+// 登录处理
+app.post('/login', (req, res) => {
+  const { username, password } = req.body
+  // 验证用户
+  if (validUser) {
+    req.session.userId = user.id
+    res.json({ success: true })
+  }
+})
 ```
 
-### 2. Token认证（JWT）
+### JWT认证
 
 ```javascript
+// JWT配置
+const jwt = require('jsonwebtoken')
+const SECRET_KEY = 'your-secret-key'
+
 // 生成Token
-const token = jwt.sign({ userId: user.id }, 'secret_key', { expiresIn: '24h' })
+function generateToken(user) {
+  return jwt.sign({ id: user.id, role: user.role }, SECRET_KEY, { expiresIn: '24h' })
+}
 
-// 验证Token
-const decoded = jwt.verify(token, 'secret_key')
-```
+// 验证Token中间件
+const verifyToken = (req, res, next) => {
+  const token = req.headers.authorization?.split(' ')[1]
+  if (!token) {
+    return res.status(401).json({ message: '未提供token' })
+  }
 
-### 3. OAuth2.0
-
-```javascript
-// OAuth2.0配置
-const oauth2Config = {
-  clientId: 'your_client_id',
-  clientSecret: 'your_client_secret',
-  redirectUri: 'http://your-app.com/callback'
+  try {
+    const decoded = jwt.verify(token, SECRET_KEY)
+    req.user = decoded
+    next()
+  } catch (err) {
+    res.status(401).json({ message: 'token无效' })
+  }
 }
 ```
 
-### 4. 双因素认证（2FA）
-
-- 密码 + 手机验证码
-- 密码 + 生物识别
-- 密码 + 认证器App
-
-## 认证流程实现
-
-### 1. 注册流程
-
-1. 用户信息验证
-2. 密码加密存储
-3. 账户激活机制
-
-### 2. 登录流程
-
-1. 身份验证
-2. 会话管理
-3. 权限分配
-
-### 3. 密码重置
-
-1. 重置请求验证
-2. 临时Token生成
-3. 安全邮件发送
-
-## 安全最佳实践
-
-### 1. 密码安全
+### OAuth 2.0认证
 
 ```javascript
-// 密码加密
-const salt = await bcrypt.genSalt(10)
-const hashedPassword = await bcrypt.hash(password, salt)
+// 使用Passport实现GitHub OAuth认证
+const passport = require('passport')
+const GitHubStrategy = require('passport-github2').Strategy
 
-// 密码验证
-const isValid = await bcrypt.compare(password, hashedPassword)
-```
-
-### 2. Token管理
-
-- Token加密
-- 过期时间设置
-- 刷新机制
-
-### 3. 防护措施
-
-1. 防止暴力破解
-
-```javascript
-const rateLimit = require('express-rate-limit')
-
-app.use(
-  '/api/login',
-  rateLimit({
-    windowMs: 15 * 60 * 1000, // 15分钟
-    max: 5 // 最多5次尝试
-  })
+passport.use(
+  new GitHubStrategy(
+    {
+      clientID: 'your-client-id',
+      clientSecret: 'your-client-secret',
+      callbackURL: 'http://localhost:3000/auth/github/callback'
+    },
+    function (accessToken, refreshToken, profile, done) {
+      // 保存用户信息
+      User.findOrCreate({ githubId: profile.id }, function (err, user) {
+        return done(err, user)
+      })
+    }
+  )
 )
 ```
 
-2. XSS防护
+## 安全最佳实践
 
-- 输入验证
-- 输出转义
-- CSP配置
+### 密码安全
 
-3. CSRF防护
+```javascript
+// 使用bcrypt加密密码
+const bcrypt = require('bcrypt')
+const saltRounds = 10
 
-- Token验证
-- SameSite Cookie
+// 加密密码
+async function hashPassword(password) {
+  const salt = await bcrypt.genSalt(saltRounds)
+  return bcrypt.hash(password, salt)
+}
 
-## 认证系统架构
+// 验证密码
+async function verifyPassword(password, hash) {
+  return bcrypt.compare(password, hash)
+}
+```
 
-### 1. 单点登录（SSO）
+### 防止XSS攻击
 
-- 统一认证中心
-- 令牌传递
-- 会话同步
+```javascript
+// 使用helmet设置安全响应头
+const helmet = require('helmet')
+app.use(helmet())
 
-### 2. 微服务认证
+// 输入验证
+const { body, validationResult } = require('express-validator')
 
-- API网关认证
-- 服务间认证
-- 权限传递
+app.post('/api/user', body('username').trim().escape(), body('email').isEmail().normalizeEmail(), (req, res) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() })
+  }
+  // 处理请求
+})
+```
 
-### 3. 多租户认证
+### 防止CSRF攻击
 
-- 租户隔离
-- 权限管理
-- 数据访问控制
+```javascript
+// 使用CSRF令牌
+const csrf = require('csurf')
+app.use(csrf({ cookie: true }))
+
+// 在表单中添加CSRF令牌
+app.get('/form', (req, res) => {
+  res.render('form', { csrfToken: req.csrfToken() })
+})
+```
+
+## 权限管理
+
+### 基于角色的访问控制（RBAC）
+
+```javascript
+// 角色中间件
+const checkRole = (role) => {
+  return (req, res, next) => {
+    if (!req.user) {
+      return res.status(401).json({ message: '未认证' })
+    }
+    if (req.user.role !== role) {
+      return res.status(403).json({ message: '无权限' })
+    }
+    next()
+  }
+}
+
+// 使用角色中间件
+app.get('/admin', checkRole('admin'), (req, res) => {
+  res.json({ message: '管理员页面' })
+})
+```
+
+### 权限粒度控制
+
+```javascript
+// 资源权限检查
+const checkPermission = (resource, action) => {
+  return async (req, res, next) => {
+    try {
+      const hasPermission = await Permission.check({
+        userId: req.user.id,
+        resource,
+        action
+      })
+      if (!hasPermission) {
+        return res.status(403).json({ message: '无权限' })
+      }
+      next()
+    } catch (err) {
+      next(err)
+    }
+  }
+}
+```
 
 ## 性能优化
 
-### 1. 缓存策略
+### 缓存策略
 
-- Token缓存
-- 用户信息缓存
-- 权限缓存
+```javascript
+// Redis缓存用户信息
+const Redis = require('ioredis')
+const redis = new Redis()
 
-### 2. 并发处理
+// 缓存用户信息
+async function cacheUserInfo(userId, userInfo) {
+  await redis.set(`user:${userId}`, JSON.stringify(userInfo), 'EX', 3600)
+}
 
-- 会话管理
-- 限流控制
-- 负载均衡
+// 获取缓存的用户信息
+async function getCachedUserInfo(userId) {
+  const cached = await redis.get(`user:${userId}`)
+  return cached ? JSON.parse(cached) : null
+}
+```
+
+### 并发控制
+
+```javascript
+// 使用rate-limiter限制登录请求
+const rateLimit = require('express-rate-limit')
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15分钟
+  max: 5, // 限制5次尝试
+  message: '登录尝试次数过多，请稍后再试'
+})
+
+app.post('/login', loginLimiter, (req, res) => {
+  // 登录处理
+})
+```
 
 ## 总结
 
 :::tip
-身份认证是Web应用安全的核心组件，选择合适的认证方案并遵循安全最佳实践至关重要。在实现认证系统时，需要平衡安全性、用户体验和系统性能，同时要考虑到系统的可扩展性和维护性。
+身份认证是Web应用安全的核心组件，选择合适的认证方案并遵循安全最佳实践至关重要。在实现认证系统时，需要平衡安全性、用户体验和系统性能，同时要考虑到系统的可扩展性和维护性。通过合理使用缓存、并发控制等技术，可以在保证安全性的同时提供良好的用户体验。
 :::

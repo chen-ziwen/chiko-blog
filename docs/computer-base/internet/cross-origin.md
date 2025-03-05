@@ -17,124 +17,245 @@ description: 浏览器同源策略、跨域问题及其解决方案
 
 ### 什么是同源
 
-- 协议相同
-- 域名相同
-- 端口相同
+```javascript
+// 判断是否同源
+function isSameOrigin(url) {
+  const current = new URL(window.location.href)
+  const target = new URL(url)
+
+  return current.protocol === target.protocol && current.hostname === target.hostname && current.port === target.port
+}
+```
 
 ## 常见跨域场景
 
-1. 前后端分离开发
-2. 调用第三方API
-3. 多个子域名之间的通信
-4. CDN资源访问
+### 接口跨域
+
+```javascript
+// 前端发起跨域请求
+fetch('https://api.example.com/data', {
+  method: 'GET',
+  credentials: 'include' // 携带Cookie
+}).catch((error) => {
+  console.error('跨域请求失败:', error)
+})
+```
+
+### 资源跨域
+
+```html
+<!-- 图片跨域 -->
+<img src="https://cdn.example.com/image.jpg" crossorigin="anonymous" />
+
+<!-- 字体跨域 -->
+<style>
+  @font-face {
+    font-family: 'CustomFont';
+    src: url('https://fonts.example.com/font.woff2') format('woff2');
+    font-display: swap;
+  }
+</style>
+```
 
 ## 跨域解决方案
 
-### 1. CORS（跨域资源共享）
+### CORS（跨域资源共享）
 
 ```javascript
-// 服务器端配置
+// 服务器端配置（Express）
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
+  // 允许特定域名访问
+  res.header('Access-Control-Allow-Origin', 'https://your-app.com')
+  // 允许携带Cookie
+  res.header('Access-Control-Allow-Credentials', 'true')
+  // 允许的请求方法
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+  // 允许的请求头
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+  // 预检请求缓存时间
+  res.header('Access-Control-Max-Age', '86400')
+
+  // 处理预检请求
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200)
+  }
   next()
 })
 ```
 
-### 2. JSONP
+### 代理服务器
 
 ```javascript
-function jsonp(url, callback) {
-  const script = document.createElement('script')
-  script.src = `${url}?callback=${callback}`
-  document.body.appendChild(script)
-}
-```
-
-### 3. 代理服务器
-
-```javascript
-// vue.config.js
-module.exports = {
-  devServer: {
+// Vite开发环境代理配置
+export default defineConfig({
+  server: {
     proxy: {
       '/api': {
-        target: 'http://target-domain.com',
-        changeOrigin: true
+        target: 'https://api.example.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
+  }
+})
+
+// Nginx生产环境代理配置
+server {
+  listen 80;
+  server_name your-app.com;
+
+  location /api/ {
+    proxy_pass https://api.example.com/;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
   }
 }
 ```
 
-### 4. postMessage
+### JSONP
 
 ```javascript
-// 发送消息
-window.postMessage('Hello', 'http://receiver.com')
+// JSONP封装
+function jsonp(url, callback) {
+  const script = document.createElement('script')
+  const callbackName = 'jsonp_' + Date.now()
 
-// 接收消息
-window.addEventListener('message', (event) => {
-  if (event.origin !== 'http://sender.com') return
-  console.log(event.data)
+  // 创建全局回调函数
+  window[callbackName] = (data) => {
+    callback(data)
+    document.body.removeChild(script)
+    delete window[callbackName]
+  }
+
+  script.src = `${url}?callback=${callbackName}`
+  document.body.appendChild(script)
+}
+
+// 使用示例
+jsonp('https://api.example.com/data', (data) => {
+  console.log('JSONP响应:', data)
 })
 ```
 
-### 5. WebSocket
+### postMessage跨域通信
 
 ```javascript
-const ws = new WebSocket('ws://api.example.com')
-ws.onopen = () => {
-  console.log('连接已建立')
+// 父窗口发送消息
+const iframe = document.querySelector('iframe')
+iframe.onload = () => {
+  iframe.contentWindow.postMessage('Hello from parent', 'https://child.example.com')
 }
-ws.onmessage = (event) => {
+
+// 子窗口接收消息
+window.addEventListener('message', (event) => {
+  // 验证来源
+  if (event.origin !== 'https://parent.example.com') return
+
   console.log('收到消息:', event.data)
-}
+  // 回复消息
+  event.source.postMessage('Hello from child', event.origin)
+})
+```
+
+## 安全考虑
+
+### CORS安全配置
+
+```javascript
+// 严格的CORS配置
+app.use((req, res, next) => {
+  // 只允许特定域名
+  const allowedOrigins = ['https://app1.com', 'https://app2.com']
+  const origin = req.headers.origin
+
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin)
+  }
+
+  // 禁止携带凭证
+  res.header('Access-Control-Allow-Credentials', 'false')
+
+  // 限制请求方法
+  res.header('Access-Control-Allow-Methods', 'GET, POST')
+
+  next()
+})
+```
+
+### CSP配置
+
+```javascript
+// 设置Content-Security-Policy
+app.use((req, res, next) => {
+  res.header(
+    'Content-Security-Policy',
+    `
+    default-src 'self';
+    img-src 'self' https://cdn.example.com;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval';
+    style-src 'self' 'unsafe-inline';
+    font-src 'self' https://fonts.example.com;
+  `
+      .replace(/\s+/g, ' ')
+      .trim()
+  )
+  next()
+})
 ```
 
 ## 最佳实践
 
-### 1. 安全性考虑
+### 错误处理
 
-- 避免使用 `Access-Control-Allow-Origin: *`
-- 合理配置 CORS 头部
-- 验证请求来源
+```javascript
+// 前端统一处理跨域错误
+function fetchWithCORS(url, options = {}) {
+  return fetch(url, {
+    ...options,
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers
+    }
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      return response.json()
+    })
+    .catch((error) => {
+      if (error instanceof TypeError && error.message.includes('CORS')) {
+        console.error('CORS错误：请检查服务器配置')
+      }
+      throw error
+    })
+}
+```
 
-### 2. 性能优化
+### 性能优化
 
-- 合理使用缓存
-- 减少跨域请求次数
-- 选择合适的跨域方案
+```javascript
+// 预检请求优化
+app.use((req, res, next) => {
+  // 增加预检请求缓存时间
+  res.header('Access-Control-Max-Age', '86400')
 
-### 3. 开发环境配置
+  // 允许压缩
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Accept-Encoding')
 
-- 使用代理服务器
-- 统一的跨域处理方案
-- 环境变量管理
+  next()
+})
 
-## 常见问题与解决
-
-### 1. OPTIONS 预检请求
-
-- 产生原因
-- 如何处理
-- 优化策略
-
-### 2. Cookie 跨域
-
-- withCredentials 配置
-- 服务器端配置
-- 安全考虑
-
-### 3. 跨域错误处理
-
-- 错误捕获
-- 降级处理
-- 用户提示
+// 使用浏览器缓存
+app.get('/api/data', (req, res) => {
+  res.header('Cache-Control', 'max-age=3600')
+  // 返回数据
+})
+```
 
 ## 总结
 
 :::tip
-跨域是前端开发中常见的问题，选择合适的跨域解决方案需要考虑安全性、性能、维护性等多个方面。了解各种跨域方案的优缺点，结合实际场景选择最适合的解决方案，是提高前端开发效率的关键。
+跨域是前端开发中常见的问题，合理使用CORS、代理服务器等解决方案可以有效处理跨域访问需求。在实现跨域方案时，需要注意安全性，合理配置CORS和CSP策略，同时考虑性能优化，减少不必要的预检请求。选择合适的跨域方案时，要根据具体场景和需求权衡利弊。
 :::
