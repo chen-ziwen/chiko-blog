@@ -45,15 +45,6 @@ export default defineConfig({
       text: '去 GitHub 上编辑内容'
     },
     nav: [
-      // {
-      //   text: '技术笔记',
-      //   items: [
-      //     { text: '模板工程', link: '/technology/tpl/' },
-      //     { text: '源码学习', link: '/technology/source/' },
-      //     { text: '技术概念', link: '/technology/theory/' },
-      //     { text: '个人作品', link: '/technology/works/' },
-      //   ]
-      // },
       {
         text: '计算机基础',
         items: [

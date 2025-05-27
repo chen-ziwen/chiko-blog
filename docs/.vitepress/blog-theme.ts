@@ -41,14 +41,14 @@ const blogTheme = getThemeConfig({
   },
 
   // 友链
-  friend: [
-    {
-      nickname: 'Vitepress',
-      des: 'Vite & Vue Powered Static Site Generator',
-      avatar: 'https://vitepress.dev/vitepress-logo-large.webp',
-      url: 'https://vitepress.dev/'
-    }
-  ],
+  // friend: [
+  //   {
+  //     nickname: 'Vitepress',
+  //     des: 'Vite & Vue Powered Static Site Generator',
+  //     avatar: 'https://vitepress.dev/vitepress-logo-large.webp',
+  //     url: 'https://vitepress.dev/'
+  //   }
+  // ],
 
   // 公告
   // popover: {
