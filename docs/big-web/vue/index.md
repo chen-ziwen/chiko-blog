@@ -5,6 +5,7 @@ sidebar:
 group:
   title: Vue
 comment: false
+date: 2025-05-30
 ---
 
 # 简介
@@ -13,6 +14,7 @@ Vue.js是一个渐进式的JavaScript框架，它以声明式渲染和组件化�
 
 ## 目录
 
+- [组件库全局配置之 ConfigProvider](./config-provider.md)
 - [Vue的Diff算法详解](./diff-algorithm.md)
 - [Vue与React的深度对比](./vue-vs-react.md)
 - [Vue响应式原理分析](./reactive-principle.md)
