@@ -58,8 +58,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         name: Install pnpm
         with:
-          version: 10.9.0
-          # version: 9
+          # version: 10.9.0 注释掉解决冲突
           run_install: false
 
         # 安装依赖
