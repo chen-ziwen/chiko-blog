@@ -24,3 +24,4 @@ comment: false
 - [css 滚动动画](./css-scroll.md)
 - [uni 使用 unocss](./uni-unocss.md)
 - [驱动收集](./driver.md)
+- [设置 Nodejs 项目的包导入方式](./module.md)

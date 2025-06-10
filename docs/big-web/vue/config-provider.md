@@ -2,7 +2,7 @@
 top: 1
 sticky: 998
 title: 组件库全局配置之 ConfigProvider
-date: 2025-05-25
+date: 2025-06-3
 isTimeLine: true
 tags:
   - Vue3
