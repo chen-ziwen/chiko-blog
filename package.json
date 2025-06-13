@@ -10,6 +10,7 @@
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
     "serve": "vitepress serve docs",
+    "cz": "git-cz",
     "prepare": "husky"
   },
   "dependencies": {
