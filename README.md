@@ -22,7 +22,7 @@
 
 ## 来逛逛吧
 
-- [Vercel](https://www.chiko.store)（推荐，加载更快）
+- [Vercel](https://chiko-blog.vercel.app)（推荐，加载更快）
 - [GitHub Pages](https://blog.chiko.store/)
 
 推开这扇数字之门，让我们一起在代码的严谨与生活的诗意之间，寻找属于我们的独特节奏。
